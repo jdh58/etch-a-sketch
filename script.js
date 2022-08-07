@@ -1,4 +1,4 @@
-let userInput = document.getElementById("size");
+let userSizeInput = document.getElementById("size");
 const sketcher = document.getElementById('sketcher');
 let userSize = 0;
 const DEFAULT_SIZE = 16;
@@ -8,13 +8,13 @@ this element will be used to fill the grid */
 const boxDiv = document.createElement('div');
 boxDiv.classList.add('box');
 
-/* When the user clicks confirm, change the grid to be the size
-of the user's input */
-document.getElementById('confirm').addEventListener('click', changeGrid);
-document.getElementById('reset').addEventListener('click', initializeGrid);
-
 /* Start off with a 16x16 grid */
 initializeGrid(DEFAULT_SIZE);
+
+/* When the user clicks 'CONFIRM', change the grid to be the size
+of the user's input */
+document.getElementById('confirm').addEventListener('click', changeGrid);
+document.getElementById('reset').addEventListener('click', changeGrid);
 
 /* Change the grid to be the size of the user's input */
 function changeGrid() {
@@ -22,8 +22,8 @@ function changeGrid() {
     sketcher.textContent = '';
 
     // Record the user's input, and clear the textbox
-    userSize = userInput.value;
-    userInput.value = '';
+    userSize = userSizeInput.value;
+    userSizeInput.value = '';
     
     // Don't allow inputs less than 0 or greater than 100
     if (userSize < 0) {
@@ -73,16 +73,16 @@ function colorizeBoxes(e) {
     
     /* Update the bakground color
     Minor Issue: the 'background' variable doesn't work here */
-    e.target.style.backgroundColor = `rgba(13, 240, 235, ${opacity})`;
+    e.target.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
 }
 
-
+/* Sets the grid to the constant DEFAULT_SIZE */
 function initializeGrid(size) {
     // Set up the CSS so the grid matches the default size
     sketcher.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     sketcher.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-    // Add size^2 number of boxes to fill the grid
+    // Add size^2 numbers of boxes to fill the grid
     for (let i = 0; i < size * size; i++) {
         sketcher.appendChild(boxDiv.cloneNode(true));
     }

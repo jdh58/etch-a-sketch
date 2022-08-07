@@ -3,6 +3,10 @@ html {
     box-sizing: border-box;
 }
 
+body {
+    background: rgb(189, 202, 224);
+}
+
 #container {
     width: 70%;
     margin: auto;
@@ -11,21 +15,27 @@ html {
 #title {
     text-align: center;
     font-size: 48px;
+    font-weight: 600;
+    text-shadow: 1px 1px 0 white, -1px -1px 0 white,
+        1px -1px 0 white, -1px 1px 0 white;
     margin: 25px auto;
 }
 
 #main {
     display: flex;
     margin: auto;
+    width: 80%;
 }
 
 #sketcher {
     display: grid;
+    background: white;
     width: 600px;
     height: 600px;
     border-style: solid;
     border-width: 3px;
     border-radius: 10px;
+    margin-left: auto;
     flex: 0 0 auto;
 }
 
@@ -34,11 +44,56 @@ html {
     border-width: .5px;
 }
 
-#reset {
+#sidebar {
+    text-align: center;
+    align-self: center;
+    flex: 1 1 auto;
+}
+
+#sidebar label {
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 0px 0px 2px rgb(255, 255, 255);
+}
+
+#sidebar input {
+    margin-top: 3px;
+    margin-bottom: 5px;
+    width: 100px;
+    height: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
 }
 
 .buttons {
     text-transform: uppercase;
     display: block;
     margin: auto;
+    font-size: 18px;
+    font-weight: 500;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: black;
+    padding: 8px;
+    transition: background-color, .3s;
+}
+
+#confirm {
+    background-color: rgb(152, 232, 152);
+}
+
+#confirm:hover {
+    background-color: rgb(130, 204, 130);
+}
+
+#reset {
+    background-color: rgb(232, 152, 152);
+    margin-top: 5px;
+}
+
+#reset:hover {
+    background-color: rgb(204, 130, 130);
 }
