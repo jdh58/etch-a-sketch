@@ -13,3 +13,4 @@ Future Features To-Do List:
 -Add media queries to adapt for smaller viewports
 -Add footer
 -Introduce a slider as an alternative grid size selection method
+-Add shake effect when resetting
