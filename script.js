@@ -7,11 +7,12 @@ const DEFAULT_SIZE = 16;
 this will be used to fill the grid */
 const boxDiv = document.createElement('div');
 boxDiv.classList.add('box');
+let opacity = 0; // Default value, will add 10% each hover
 
 /* When the user clicks confirm, change the grid to be the size
 of the user's input */
 document.getElementById('confirm').addEventListener('click', changeGrid);
-document.getElementById('reset').addEventListener('click', changeGrid);
+document.getElementById('reset').addEventListener('click', initializeGrid);
 
 /* Start off with a 16x16 grid */
 initializeGrid(DEFAULT_SIZE);
@@ -45,11 +46,11 @@ function changeGrid() {
     looks for hover and calls function colorizeBoxes */
     let gridBoxes = document.querySelectorAll('.box')
     gridBoxes.forEach(element => 
-        element.addEventListener('mouseover', colorizeBoxes, {once: true}))
+        element.addEventListener('mouseover', colorizeBoxes))
 }
 
 function colorizeBoxes(e) {
-    console.log(e);
+    e.target.style.backgroundColor = `black`;
 }
 
 function initializeGrid(size) {
@@ -61,4 +62,10 @@ function initializeGrid(size) {
     for (let i = 0; i < size * size; i++) {
         sketcher.appendChild(boxDiv.cloneNode(true));
     }
+
+    /* Select all box elements and add a event listener that
+    looks for hover and calls function colorizeBoxes */
+    let gridBoxes = document.querySelectorAll('.box')
+    gridBoxes.forEach(element => 
+        element.addEventListener('mouseover', colorizeBoxes))
 }
