@@ -4,10 +4,9 @@ let userSize = 0;
 const DEFAULT_SIZE = 16;
 
 /* Create a div element and give it the box CSS class.
-this will be used to fill the grid */
+this element will be used to fill the grid */
 const boxDiv = document.createElement('div');
 boxDiv.classList.add('box');
-let opacity = 0; // Default value, will add 10% each hover
 
 /* When the user clicks confirm, change the grid to be the size
 of the user's input */
@@ -49,9 +48,34 @@ function changeGrid() {
         element.addEventListener('mouseover', colorizeBoxes))
 }
 
+/* Colorizes the hovered boxes.
+    Potential features: 
+        -User selected color
+        -Brush hardness that changes the opacity increments
+*/
 function colorizeBoxes(e) {
-    e.target.style.backgroundColor = `black`;
+    // Makes a variable for background color. Code readability purposes
+    let background = e.target.style.backgroundColor;
+    // This RegExp will return the alpha value of an rgba string
+    const alphaValue = /\.\d+/;
+    // Initialize opacity as 0 for each hover
+    let opacity = 0;
+
+    /* If the box hasn't yet been hovered over, set opacity to 0 */
+    if (background == '') {
+        opacity = 0;
+    } /* Otherwise, set it to the alpha value of the current rgba string */
+    else { 
+        opacity = parseFloat(background.match(alphaValue));
+    }
+    /* Add 10% to the current opacity */
+    opacity += .1;
+    
+    /* Update the bakground color
+    Minor Issue: the 'background' variable doesn't work here */
+    e.target.style.backgroundColor = `rgba(13, 240, 235, ${opacity})`;
 }
+
 
 function initializeGrid(size) {
     // Set up the CSS so the grid matches the default size
