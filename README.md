@@ -8,6 +8,7 @@ Future Features To-Do List:
 -Let the user activate an RGB randomized mode
 -Let the user choose a color
 -Let the user change opacity increments
+-Add eraser
 -Improve UI
 -Add media queries to adapt for smaller viewports
 -Add footer
